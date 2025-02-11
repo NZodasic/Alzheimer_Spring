@@ -5,20 +5,24 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "users")
 @Data
-public class Diagnosis {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String imagePath;
+    @Column(nullable = false, unique = true)
+    private String username;
 
     @Column(nullable = false)
-    private String predictedLabel;
+    private String password;
 
-    @Column(nullable = false)
-    private double confidence;
+    @Column(nullable = false, unique = true)
+    private String email;
 
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column
+    private String role = "USER"; // Mặc định là USER
 }

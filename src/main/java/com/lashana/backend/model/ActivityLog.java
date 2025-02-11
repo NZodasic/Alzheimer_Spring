@@ -6,19 +6,17 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Diagnosis {
+public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String imagePath;
+    private String username;
 
     @Column(nullable = false)
-    private String predictedLabel;
+    private String action; // Ví dụ: "UPLOAD_IMAGE", "DELETE_IMAGE", "LOGIN"
 
     @Column(nullable = false)
-    private double confidence;
-
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime timestamp = LocalDateTime.now();
 }
